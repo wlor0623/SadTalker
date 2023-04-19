@@ -127,6 +127,7 @@ class Api:
             "do_not_save_grid": not txt2imgreq.save_images,
             }
         )
+        print(populate)
         if populate.sampler_name:
             populate.sampler_index = None  # prevent a warning later on
 
