@@ -125,7 +125,6 @@ class Api:
             "sampler_name": validate_sampler_name(txt2imgreq.sampler_name or txt2imgreq.sampler_index),
             "do_not_save_samples":not txt2imgreq.save_images,
             "do_not_save_grid": not txt2imgreq.save_images,
-            "use_cdn":txt2imgreq.use_cdn or False,
             }
         )
         if populate.sampler_name:
