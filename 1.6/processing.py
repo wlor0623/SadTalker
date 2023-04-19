@@ -632,7 +632,7 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
                 print(p.do_not_save_samples)
                 print(p.outpath_samples)
                 print(opts.samples_format)
-                print(p.keys())
+
         
                 outpath_wlor=p.outpath_samples or "outpath/images"
                 print(outpath_wlor)
