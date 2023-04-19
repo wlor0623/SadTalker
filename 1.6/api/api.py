@@ -142,7 +142,6 @@ class Api:
             processed = process_images(p)
 
         shared.state.end()
-        print("send_images: " + send_images)
         b64images = list(map(encode_pil_to_base64, processed.images)) if send_images else []
 
         return TextToImageResponse(images=b64images, parameters=vars(txt2imgreq), info=processed.js())
