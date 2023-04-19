@@ -635,7 +635,6 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
                 print(p.outpath_samples)
                 print(opts.samples_format)
                 print(p.use_cdn)
-                print(opts.use_cdn)
 
         
                 outpath_wlor=p.outpath_samples or "outpath/images"
@@ -644,17 +643,18 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
                 if opts.samples_save and not p.do_not_save_samples:
                    # fullfn = images.save_image(image, outpath_wlor, "", seeds[i], prompts[i], opts.samples_format, info=infotext(n, i), p=p)
                     fullfn = images.save_image(image, outpath_wlor, "", seeds[i], prompts[i], opts.samples_format, info=infotext(n, i))
-                    try:
-                        print("fn: " + fullfn[0])
-                        print("os: " + os.getcwd())
-                        fullPath = os.path.join("/content/stable-diffusion-webui",fullfn[0])
-                        print("fullPath: ", fullPath)
-                        cos_helper.push_file_to_cos(fullPath,fullfn[0])
-                        urlPath = os.path.join(COS_BASE_DOMAIN,fullfn[0])
-                        print("urlPath: ", urlPath)
-                        output_urls.append(urlPath)
-                    except Exception as e:
-                        print(e)
+                    if p.use_cdn:
+                        try:
+                          print("fn: " + fullfn[0])
+                          print("os: " + os.getcwd())
+                          fullPath = os.path.join("/content/stable-diffusion-webui",fullfn[0])
+                          print("fullPath: ", fullPath)
+                          cos_helper.push_file_to_cos(fullPath,fullfn[0])
+                          urlPath = os.path.join(COS_BASE_DOMAIN,fullfn[0])
+                          print("urlPath: ", urlPath)
+                          output_urls.append(urlPath)
+                        except Exception as e:
+                          print(e)
 
                 text = infotext(n, i)
                 infotexts.append(text)
