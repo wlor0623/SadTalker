@@ -133,6 +133,7 @@ class Api:
         args = vars(populate)
         send_images = args.pop('send_images', True)
         args.pop('save_images', None)
+        args.pop('use_cdn', None)
         p = StableDiffusionProcessingTxt2Img(**vars(populate))
         # Override object param
 
@@ -170,6 +171,8 @@ class Api:
         args = vars(populate)
         send_images = args.pop('send_images', True)
         args.pop('save_images', None)
+        args.pop('use_cdn', None)
+        
         args.pop('include_init_images', None)  # this is meant to be done by "exclude": True in model, but it's for a reason that I cannot determine.
         p = StableDiffusionProcessingImg2Img(**args)
 
