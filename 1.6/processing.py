@@ -639,7 +639,8 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
                 print(outpath_wlor)
                 
                 if opts.samples_save and not p.do_not_save_samples:
-                    fullfn = images.save_image(image, outpath_wlor, "", seeds[i], prompts[i], opts.samples_format, info=infotext(n, i), p=p)
+                   # fullfn = images.save_image(image, outpath_wlor, "", seeds[i], prompts[i], opts.samples_format, info=infotext(n, i), p=p)
+                    fullfn = images.save_image(image, outpath_wlor, "", seeds[i], prompts[i], opts.samples_format, info=infotext(n, i))
                     try:
                         print("fn: " + fullfn[0])
                         print("os: " + os.getcwd())
