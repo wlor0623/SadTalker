@@ -141,6 +141,7 @@ class Api:
 
         with self.queue_lock:
             p.outpath_samples = shared.opts.outdir_txt2img_samples
+            p.usd_cdn = txt2imgreq.usd_cdn
             processed = process_images(p)
 
         shared.state.end()
@@ -181,6 +182,8 @@ class Api:
         shared.state.begin()
 
         with self.queue_lock:
+            p.outpath_samples = shared.opts.outdir_img2img_samples
+            
             processed = process_images(p)
 
         shared.state.end()
