@@ -699,12 +699,13 @@ def process_images_inner(p: StableDiffusionProcessing) -> Processed:
 class StableDiffusionProcessingTxt2Img(StableDiffusionProcessing):
     sampler = None
 
-    def __init__(self, enable_hr: bool=False, denoising_strength: float=0.75, firstphase_width: int=0, firstphase_height: int=0, **kwargs):
+    def __init__(self, enable_hr: bool=False, denoising_strength: float=0.75,use_cdn: bool=False, firstphase_width: int=0, firstphase_height: int=0, **kwargs):
         super().__init__(**kwargs)
         self.enable_hr = enable_hr
         self.denoising_strength = denoising_strength
         self.firstphase_width = firstphase_width
         self.firstphase_height = firstphase_height
+        self.use_cdn = use_cdn
         self.truncate_x = 0
         self.truncate_y = 0
 
